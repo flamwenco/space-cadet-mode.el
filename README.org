@@ -1,0 +1,130 @@
+* Space Cadet Mode
+
+space-cadet-mode is a minor mode for Emacs inspired by the Greek and Math layer keyboard mappings from [[http://stevelosh.com/blog/2012/10/a-modern-space-cadet/][this post]].
+Instead of having to rely on Alt+hex key combos for Unicode input, which don't work out of the box with Emacs (or maybe at all), this minor mode transforms F17 and F18 into temporary modifiers to enable the Greek and Math layers, respectively.
+
+** Using space-cadet-mode
+
+To use space cadet mode, you can put it somewhere in your emacs load path, and then make sure that
+#+BEGIN_SRC emacs-lisp
+(require 'space-cadet-mode)
+#+END_SRC
+is called.
+
+space-cadet-mode does not currently enable itself for any modes by default, and only provides the minor mode, making it up to the user to decide which modes they want to enable it for, which can be done like the following.
+
+#+BEGIN_SRC emacs-lisp
+(defun turn-on-space-cadet () (space-cadet-mode 1))
+(add-hook 'org-mode-hook 'turn-on-space-cadet)
+(add-hook 'markdown-mode-hook 'turn-on-space-cadet)
+(add-hook 'emacs-lisp-mode-hook 'turn-on-space-cadet)
+(add-hook 'mu4e-compose-mode-hook 'turn-on-space-cadet)
+#+END_SRC
+
+Then just reload your config, or restart Emacs, and you should be good to type!
+
+** Mappings
+*** Greek Mappings
+
+| Key | Alone | Shifted | Notes                                                        |
+|-----+-------+---------+--------------------------------------------------------------|
+| a   | α     | Α       | Alpha                                                        |
+| b   | β     | Β       | Beta                                                         |
+| c   | χ     | Χ       | Chi                                                          |
+| d   | δ     | Δ       | Delta                                                        |
+| e   | ε     | Ε       | Epsilon                                                      |
+| f   | φ     | Φ       | Phi (p was taken and the ph sounds like an f)                |
+| g   | γ     | Γ       | Gamma                                                        |
+| h   | η     | Η       | Eta                                                          |
+| i   | ι     | Ι       | Iota                                                         |
+| j   | ϑ     | Θ       | Theta (with one of the lowercase variants)                   |
+| k   | κ     | Κ       | Kappa                                                        |
+| l   | λ     | Λ       | Lambda (Lisp users rejoice!)                                 |
+| m   | μ     | Μ       | Mu                                                           |
+| n   | ν     | Ν       | Nu                                                           |
+| o   | ο     | Ο       | Omicron                                                      |
+| p   | π     | Π       | Pi                                                           |
+| q   | θ     | Θ       | Theta (with the other lowercase variant)                     |
+| r   | ρ     | Ρ       | Rho                                                          |
+| s   | σ     | Σ       | Sigma (with one of the lowercase variants)                   |
+| t   | τ     | Τ       | Tau                                                          |
+| u   | υ     | Υ       | Upsilon                                                      |
+| v   | ς     | Σ       | Sigma (with the other lowercase variant)                     |
+| w   | ω     | Ω       | Omega (o was taken and the lowercase kind of looks like a w) |
+| x   | ξ     | Ξ       | Xi                                                           |
+| y   | ψ     | Ψ       | Psi (p was taken and it looks a bit like a y                 |
+| z   | ζ     | Ζ       | Zeta                                                         |
+|-----+-------+---------+--------------------------------------------------------------|
+
+
+*** Math Mappings
+
+| Key     | Alone | Shifted | Notes                                             |
+|---------+-------+---------+---------------------------------------------------|
+| a       | ∧     | ℵ       | And, Aleph                                        |
+| b       |       |         |                                                   |
+| c       | ∘     | ℂ       | Composition, Complex numbers                      |
+| d       |       |         |                                                   |
+| e       | ∈     | ∉       | Element of, Not element of                        |
+| f       | ∫     |         | Integral (i was taken and it looks like an f)     |
+| g       |       |         |                                                   |
+| h       |       |         |                                                   |
+| i       | ∩     | ∞       | Intersection, Infinity                            |
+| j       |       |         |                                                   |
+| k       |       |         |                                                   |
+| l       |       |         |                                                   |
+| m       |       |         |                                                   |
+| n       |       | ℕ       | Natural numbers                                   |
+| o       | ∨     |         | Or                                                |
+| p       |       |         |                                                   |
+| q       |       |         |                                                   |
+| r       | √     | ℝ       | Root, Real numbers                                |
+| s       |       |         |                                                   |
+| t       |       |         |                                                   |
+| u       | ∪     |         | Union                                             |
+| v       |       |         |                                                   |
+| w       |       |         |                                                   |
+| x       | ⊻     |         | Xor                                               |
+| y       |       |         |                                                   |
+| z       |       | ℤ       | Integers                                          |
+| -       | ¬     |         | Not (looks like a minus)                          |
+| =       | ≠     | ±       | Not equal, Plus or minus (Shift-= is normally +)  |
+| /       | ÷     |         | Division                                          |
+| ,       |       | ≤       | Less than or equal to (Shift-, is normally <)     |
+| .       |       | ≥       | Greather than or equal to (Shift-. is normally >) |
+| 1       |       |         |                                                   |
+| 2       |       |         |                                                   |
+| 3       |       |         |                                                   |
+| 4       |       |         |                                                   |
+| 5       |       |         |                                                   |
+| 6       |       |         |                                                   |
+| 7       |       |         |                                                   |
+| 8       |       | ×       | Times or cross product (Shift-8 is normally *)    |
+| 9       |       |         |                                                   |
+| 0       | ∅     |         | Null set                                          |
+| `       |       | ≈       | Approximately equal to (Shift-` is normally ~)    |
+| [       | ⊂     | ⊄       | Proper subset of, Not proper subset of            |
+| ]       | ⊃     | ⊅       | Proper superset of, Not proper superset of        |
+| Left    | ←     | ↚       |                                                   |
+| Right   | →     | ↛       |                                                   |
+| Up/Down | ↔     | ↮       |                                                   |
+|---------+-------+---------+---------------------------------------------------|
+
+In addition, the last five rows also support the Control key for more variants
+
+| Key     | Control  | Control-Shifted | Notes                                                   |
+|---------+----------+-----------------+---------------------------------------------------------|
+| [       | DISABLED | ⊈               | Not subset of                                           |
+| ]       | ⊇        | ⊉               | Superset of, Not superset of                            |
+| Left    | ⇐        | ⇍               | (Issues on OSX because of space-switching key bindings) |
+| Right   | ⇒        | ⇏               | (Issues on OSX because of space-switching key bindings) |
+| Up/Down | ⇔        | ⇎               | (Issues on OSX because of space-switching key bindings) |
+|---------+----------+-----------------+---------------------------------------------------------|
+
+Currently, the Control-[ mapping is disabled for the Math layer because it translates to Escape, thus, it overrides the Escape key, making using Emacs a tad problematic.
+
+The Control-arrow bindings are enabled, but can clash with OSX's space-switching key bindings, so use at your own peril.
+
+** Disclaimer
+
+Being my first real attempt at doing anything remotely seriously in elisp, and my first attempt at writing a minor mode, this is some messy, hacky stuff. There's probably better, Emacs-ier, lisp-ier ways of doing things for this project. And hopefully I'll find them. But for now, take caution in enabling it, since it may clobber single-letter key-mappings, among other things.
