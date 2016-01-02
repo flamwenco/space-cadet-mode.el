@@ -48,7 +48,9 @@
 	(progn
 	  (insert math)
 	  (setq math-enabled (if (= math-enabled 1) 0 1)))
-      (insert old))))
+      (insert old)))
+  (if selectric-mode
+      (selectric-type-sound)))
 
 (defun insert-lower-alpha ()
   (interactive)
