@@ -122,7 +122,7 @@
 (defun insert-upper-delta ()
   (interactive)
   (if (and space-cadet-org-latex-chars (derived-mode-p (space-cadet-guess-major-mode)))
-      (space-cadet-insert-char "\\Delta" "" "d")
+      (space-cadet-insert-char "\\Delta" "" "D")
     (space-cadet-insert-char "Δ" "" "D")))
 
 (defun insert-lower-epsilon ()

@@ -21,7 +21,7 @@ space-cadet-mode does not currently enable itself for any modes by default, and 
 (add-hook 'mu4e-compose-mode-hook 'turn-on-space-cadet)
 #+END_SRC
 
-space-cadet-mode also supports typing the characters as their LaTeX symbols while in org-mode, to make for easier exporting using LaTeX.
+space-cadet-mode also supports typing the characters as their LaTeX symbols while in a few different modes (org-mode, LaTeX-mode and latex-mode by default), to make for easier exporting using LaTeX.
 This can be turned on by settings `space-cadet-org-latex-chars` to `t`.
 
 #+BEGIN_SRC emacs-lisp
@@ -29,6 +29,12 @@ This can be turned on by settings `space-cadet-org-latex-chars` to `t`.
 #+ENd_SRC
 
 When used with [[http://orgmode.org/manual/Special-symbols.html][org-mode's ability]] to display the LaTeX symbols as their UTF-8 equivalents, the mode acts very much like it does elsewhere.
+
+In order to make space-cadet-mode print the LaTeX symbols in another mode, add it to space-cadet-latex-modes-alist:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'space-cadet-latex-modes-alist '(TeX-mode . ""))
+#+END_SRC
 
 Then just reload your config, or restart Emacs, and you should be good to type!
 
