@@ -22,7 +22,7 @@ space-cadet-mode does not currently enable itself for any modes by default, and 
 #+END_SRC
 
 space-cadet-mode also supports typing the characters as their LaTeX symbols while in a few different modes (org-mode, LaTeX-mode and latex-mode by default), to make for easier exporting using LaTeX.
-This can be turned on by settings `space-cadet-org-latex-chars` to `t`.
+This can be turned on by settings ~space-cadet-org-latex-chars~ to ~t~.
 
 #+BEGIN_SRC emacs-lisp
 (setq space-cadet-org-latex-chars t)
